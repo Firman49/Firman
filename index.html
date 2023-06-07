@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Saya</title>
+    <style>
+        /* CSS untuk tampilan navigasi */
+        ul.navbar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+        ul.navbar li {
+            float: right;
+        }
+
+        ul.navbar li a {
+            display: block;
+            color: #333;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        ul.navbar li a:hover {
+            background-color: #ddd;
+        }
+
+        /* CSS untuk dropdown menu */
+        ul.dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        ul.dropdown-menu li {
+            float: none;
+        }
+
+        ul.dropdown-menu li a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        ul.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+    <script>
+        // JavaScript untuk mengontrol dropdown menu
+        window.addEventListener('DOMContentLoaded', function () {
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            dropdowns.forEach(function (dropdown) {
+                dropdown.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    const dropdownMenu = this.querySelector('.dropdown-menu');
+                    dropdownMenu.classList.toggle('show');
+                });
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    const activeDropdown = document.querySelector('.dropdown.active');
+                    if (activeDropdown) {
+                        activeDropdown.classList.remove('active');
+                        const dropdownMenu = activeDropdown.querySelector('.dropdown-menu');
+                        dropdownMenu.classList.remove('show');
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <ul class="navbar">
+        <li><a href="#">Nav 1</a></li>
+        <li class="dropdown">
+            <a href="#">Nav 2 &#9662;</a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Subnav 1</a></li>
+                <li><a href="#">Subnav 2</a></li>
+                <li><a href="#">Subnav 3</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Nav 3</a></li>
+    </ul>
+
+    <h1>Website Saya</h1>
+
+    <p>Isi konten website Anda di sini.</p>
+</body>
+
+</html>
